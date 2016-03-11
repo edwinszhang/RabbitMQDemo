@@ -28,3 +28,9 @@ Please refer to official tutorial.
   <version>3.6.1</version>
 </dependency>
 ```
+### Producer
+> https://github.com/z00s/RabbitMQDemo/tree/dev-1.0.0-simple-mq/Rabbit/src/main/java/com/mozs/rabbit/Producer.java.java
+
+### Consumer
+
+> https://github.com/z00s/RabbitMQDemo/tree/dev-1.0.0-simple-mq/Rabbit/src/main/java/com/mozs/rabbit/Consumer.java
