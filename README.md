@@ -34,3 +34,15 @@ Please refer to official tutorial.
 ### Consumer
 
 > https://github.com/z00s/RabbitMQDemo/tree/dev-1.0.0-simple-mq/Rabbit/src/main/java/com/mozs/rabbit/Consumer.java
+
+### Usage
+
+```bash
+$ cd Rabbit
+$ mvn package
+$ cd target
+$ java -jar target/Worker-jar-with-dependencies.jar
+$ java -jar target/Sender-jar-with-dependencies.jar [Anything you want...]
+
+
+```

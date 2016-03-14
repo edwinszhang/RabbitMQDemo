@@ -26,6 +26,7 @@ public class Producer {
         Connection connection = MQConnectionFactory.getConnection();
         Channel channel = connection.createChannel();
         String msg = "testing sending...";
+        msg += args[0];
         channel.basicPublish(EXCHANGE_NAME, ROUTE_KEY, null, msg.getBytes());
         channel.close();
         connection.close();

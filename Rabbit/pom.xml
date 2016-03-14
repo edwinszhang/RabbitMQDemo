@@ -64,23 +64,49 @@
       </testResource>
     </testResources>
     <plugins>
+      <!--assembly-->
+      <!--usage link: http://maven.apache.org/plugins/maven-assembly-plugin/usage.html-->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>2.6</version>
-        <configuration>
-          <!--assembly mode-->
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-          <archive>
-            <manifest>
-              <mainClass>com.mozs.rabbit.Producer</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
+
         <executions>
+          <!--sender-->
           <execution>
-            <id>make-assembly</id>
+            <id>sender</id>
+            <configuration>
+              <!--assembly mode-->
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <archive>
+                <manifest>
+                  <mainClass>com.mozs.rabbit.Producer</mainClass>
+                </manifest>
+              </archive>
+              <finalName>Sender</finalName>
+            </configuration>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+
+          <!--receive-->
+          <execution>
+            <id>worker</id>
+            <configuration>
+              <!--assembly mode-->
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <archive>
+                <manifest>
+                  <mainClass>com.mozs.rabbit.Consumer</mainClass>
+                </manifest>
+              </archive>
+              <finalName>Worker</finalName>
+            </configuration>
             <phase>package</phase>
             <goals>
               <goal>single</goal>
@@ -88,6 +114,7 @@
           </execution>
         </executions>
       </plugin>
+
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.2</version>

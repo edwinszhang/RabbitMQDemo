@@ -12,25 +12,23 @@ import java.util.Date;
  */
 public class Consumer {
 
-//    private final static String EXCHANGE_NAME = "test entry.zs";
-//    private final static String ROUTE_KEY = "brick.zs";
     private final static String QUENE = "test.brick.zs";
 
-//    public static void main (String[] args) throws Exception {
-//        Connection connection = MQConnectionFactory.getConnection();
-//        Channel channel = connection.createChannel();
-//        channel.queueDeclare();
-//        System.out.println("## Waiting for MQ message. To exit press CTRL+C");
-//
-//        QueueingConsumer consumer = new QueueingConsumer(channel);
-//        channel.basicConsume(QUENE, true, consumer);
-//
-//        while (true) {
-//            QueueingConsumer.Delivery delivery = consumer.nextDelivery();
-//            String msg = new String(delivery.getBody());
-//            System.out.println("## [" + getCurrentTime() + "] Received MQ message: " + msg);
-//        }
-//    }
+    public static void main (String[] args) throws Exception {
+        Connection connection = MQConnectionFactory.getConnection();
+        Channel channel = connection.createChannel();
+        channel.queueDeclare();
+        System.out.println("## Waiting for MQ message. To exit press CTRL+C");
+
+        QueueingConsumer consumer = new QueueingConsumer(channel);
+        channel.basicConsume(QUENE, true, consumer);
+
+        while (true) {
+            QueueingConsumer.Delivery delivery = consumer.nextDelivery();
+            String msg = new String(delivery.getBody());
+            System.out.println("## [" + getCurrentTime() + "] Received MQ message: " + msg);
+        }
+    }
 
     private static String getCurrentTime() {
         SimpleDateFormat sdf= new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
